@@ -25,7 +25,7 @@ Return
 Return
 
 ; This is what I"m currently working on.
-^+!j::
+^!j::
   SendInput ^h ; Open Search & Replace window
   id := WinExist("A") ; Grab the ID of the active window.
   SendInput !g ; Set to Regex mode
