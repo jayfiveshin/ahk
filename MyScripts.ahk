@@ -65,25 +65,25 @@ Return
   SearchAndReplace("{Raw}\|\r\n","\r\n")
 
   ; Match all entries where For attribute is not the first, then change the order so it is.
-  SearchAndReplace("{Raw}(\w+)\|(.+)\|(For=""[\w.]+""|Entity=""[\w._]+"")","\1|\3|\2")
+  SearchAndReplace("{Raw}(\w+)\|(.+)\|(For=""[\w.:]+""|Entity=""[\w._]+"")","\1|\3|\2")
 
   ; Match all fields where Caption attribute is not the second, then change the order so it is.
-  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.]+""|Entity=""[\w._]+""))\|(.+)\|(Caption="".*?"")","\1|\5|\4")
+  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.:]+""|Entity=""[\w._]+""))\|(.+)\|(Caption="".*?"")","\1|\5|\4")
 
   ; Match all fields where Caption attribute is not used, then add a place-holder with blank caption.
-  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.]+""|Entity=""[\w._]+""))(\|(?!Caption="".*?"")(?!\|).+|\s|$)","\1|\4")
+  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.:]+""|Entity=""[\w._]+""))(\|(?!Caption="".*?"")(?!\|).+|\s|$)","\1|\4")
 
   ; Match all fields where IsMandatory attribute is not the third, then change the order so it is.
-  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|.+)(\|IsMandatory=""\w+"")","\1\4\6\5")
+  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.:]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|.+)(\|IsMandatory=""\w+"")","\1\4\6\5")
 
   ; Match all fields where IsMandatory attribute is not used, then add a place-holder with blank caption.
-  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|(?!IsMandatory=""\w+"")(?!\|).+|\s|$)","\1\4|\5")
+  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.:]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|(?!IsMandatory=""\w+"")(?!\|).+|\s|$)","\1\4|\5")
 
   ; Match all fields where ReadOnly attribute is not the fourth then change the order so it is.
-  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|IsMandatory=""\w+""|\|)(\|.+)(\|ReadOnly=""\w+"")","\1\4\5\7\6")
+  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.:]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|IsMandatory=""\w+""|\|)(\|.+)(\|ReadOnly=""\w+"")","\1\4\5\7\6")
 
   ; Match all fields where ReadOnly attribute is not used, then add a place-holder with blank caption.
-  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|IsMandatory=""\w+""|\|)(\|(?!ReadOnly=""\w+"")(?!\|).+|\s|$)","\1\4\5|\6")
+  SearchAndReplace("{Raw}((Field|GridPanel|GridSection)\|(For=""[\w.:]+""|Entity=""[\w._]+""))(\|Caption="".*?""|\|)(\|IsMandatory=""\w+""|\|)(\|(?!ReadOnly=""\w+"")(?!\|).+|\s|$)","\1\4\5|\6")
 
   SendInput !. ; Set to . to match newline
 
@@ -99,7 +99,7 @@ Return
   SendInput !. ; Set to . to no longer match newline
 
   ; Match For attributes and strip away everything except for what is contained in the quotes.
-  SearchAndReplace("{Raw}\bFor=""([\w.]+)""","\1")
+  SearchAndReplace("{Raw}\bFor=""([\w.:]+)""","\1")
 
   ; Match Entity attributes and strip away everything except for what is contained in the quotes.
   SearchAndReplace("{Raw}\bEntity=""([\w._]+)""","\1")
